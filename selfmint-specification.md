@@ -91,12 +91,12 @@ The code is parsed upon receipt by the end user and the three elements are used 
 
 All [covenant spending constraints](#self-mint-baton-covenant) are secured by a signature. The private key used to create this signature corresponds to the public key placed into the [baton](](#self-mint-baton-covenant)[) and [postage](#self-mint-postage-covenant) covenants. The message signed is a serialization of
 * `bytes36 stamp_outpoint`
-* `tx_outputs` - the serialization of all output amounts (`bytes8` little endian) paired up with their scriptPubKey (serialized as scripts inside CTxOuts). This is the data on which is performed a double SHA256 to create hashOutputs in [Bitcoincash-BIP143](https://github.com/bitcoincashorg/bitcoincash.org/blob/master/spec/replay-protected-sighash.md#digest-algorithm) transaction digest. Cosists of the following outputs:
+* `tx_outputs` - the serialization of all output amounts (`bytes8` little endian) paired up with their scriptPubKey (serialized as scripts inside CTxOuts). This is the data on which is performed a double SHA256 to create hashOutputs in [Bitcoincash-BIP143](https://github.com/bitcoincashorg/bitcoincash.org/blob/master/spec/replay-protected-sighash.md#digest-algorithm) transaction digest. Consists of the following outputs:
    * `vout 0`
       * `bytes51 scriptPubKey` MINT OP_RETURN
       * `bytes8 satoshis` - 0
    * `vout 1`
-      * `bytes26 scriptPubKey` - P2PKH with public key hash corresponding the the key being used to perform the final OP_CHECKSIG on both inputs
+      * `bytes26 scriptPubKey` - P2PKH with public key hash corresponding the key being used to perform the final OP_CHECKSIG on both inputs
       * `bytes8 satoshis` - 546
    * `vout 2`
       * `bytes24 scriptPubKey` - P2SH for Self Mint Baton Covenant
